@@ -1,0 +1,39 @@
+CREATE TABLE student (
+    student_id INT,
+    name VARCHAR(20),
+    major VARCHAR(20),
+    PRIMARY KEY(student_id)
+);
+
+SELECT * FROM student;
+
+DROP TABLE student;
+
+INSERT INTO student VALUES(1, 'Jack', 'Biology');
+INSERT INTO student VALUES(2, 'Kate', 'Sociology');
+INSERT INTO student VALUES(3, 'Claire', 'Chemistry');
+INSERT INTO student VALUES(4, 'Jack', 'Biology');
+INSERT INTO student VALUES(5, 'Mike', 'Computer Science');
+
+UPDATE student
+SET major='bio'
+WHERE major='biology';
+
+UPDATE student
+SET major='CS'
+WHERE major='Computer Science';
+
+UPDATE student
+SET major='CS'
+WHERE student_id = 4;
+
+UPDATE student
+SET major='Biochemistry'
+WHERE major='bio' OR major='Chemistry';
+
+DELETE FROM student
+WHERE student_id = 5;
+
+DELETE FROM student
+WHERE name='Jack' AND major='CS';
+
