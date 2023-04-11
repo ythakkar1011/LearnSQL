@@ -1,0 +1,53 @@
+--Find all Employees
+SELECT * FROM employee;
+
+--Find all clients
+SELECT * FROM client;
+
+--Find all Employees ordered by salary
+SELECT * FROM employee
+ORDER BY salary DESC;
+
+--Find all employees ordered by sex then first_name then last_name
+SELECT * FROM employee
+ORDER BY sex, first_name, last_name;
+
+--Find the first 5 employees in the table
+SELECT * FROM employee LIMIT 5;
+
+--Find the first and last name of all employees
+SELECT first_name, last_name FROM employee;
+
+--Find the forenames and surnames of all employees
+SELECT first_name AS forename, last_name AS surname FROM employee;
+
+--Find out all the different genders of the employees
+SELECT DISTINCT sex FROM employee;
+
+-----USING FUNCTIONS------
+
+--Find the number of employees
+SELECT COUNT(emp_id) FROM employee;
+
+--Find the number of female employees born after 1970
+SELECT COUNT(*) FROM employee
+WHERE (sex = 'F' AND birth_day > '1970-01-01');
+
+--Find Average Salary of all male employees
+SELECT ROUND(AVG(salary)) FROM employee
+WHERE sex = 'M';
+
+--Find the sum of all employee salaries
+SELECT SUM(salary) FROM employee;
+
+--Find out how many males and females there are
+SELECT COUNT(sex), sex FROM employee
+GROUP BY sex;
+
+--Find the total sales by each salesman
+SELECT SUM(total_sales), emp_id FROM works_with
+GROUP BY emp_id;
+
+--Find the total amount spent by each client
+SELECT SUM(total_sales), client_id FROM works_with
+GROUP BY client_id;
