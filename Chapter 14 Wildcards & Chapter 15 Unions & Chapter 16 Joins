@@ -1,0 +1,43 @@
+--% = any # of characters, and _ = 1 character
+
+--Wildcard Usage
+--Find any clients who are an LLC
+SELECT * FROM client
+WHERE client_name LIKE '%LLC';
+
+--Find any Employee born in october
+SELECT * FROM employee
+WHERE birth_day LIKE '%-10-%';
+
+--Find any clients that are schools
+SELECT * FROM client
+WHERE client_name LIKE '%School%';
+
+
+--Union Usage
+--Find a list of employees and branch names
+SELECT first_name FROM employee
+UNION
+SELECT branch_name FROM branch;
+
+--Find a list of all the money earned or spent by the company
+SELECT salary FROM employee
+UNION
+SELECT total_sales FROM works_with;
+
+--Join Usage
+INSERT INTO branch VALUES(4, 'Buffalo', NULL, NULL);
+
+--Find all branches and the names of their managers using "JOIN"
+SELECT emp_id, first_name, branch_name FROM employee
+JOIN branch ON emp_id = mgr_id;
+
+--Find all branches and the names of their managers using "LEFT JOIN"
+SELECT emp_id, first_name, branch_name FROM employee
+LEFT JOIN branch ON emp_id = mgr_id;
+
+--Find all branches and the names of their managers using "RIGHT JOIN"
+SELECT emp_id, first_name, branch_name FROM employee
+RIGHT JOIN branch ON emp_id = mgr_id;
+
+--FULL JOIN is a thing in sql but not mysql
