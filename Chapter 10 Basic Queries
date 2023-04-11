@@ -1,0 +1,26 @@
+DELETE FROM student;
+
+INSERT INTO student VALUES(1, 'Jack', 'Biology');
+INSERT INTO student VALUES(2, 'Kate', 'Sociology');
+INSERT INTO student VALUES(3, 'Claire', 'Chemistry');
+INSERT INTO student VALUES(4, 'Jack', 'Biology');
+INSERT INTO student VALUES(5, 'Mike', 'Computer Science');
+
+SELECT * FROM student;
+
+SELECT *
+FROM student
+ORDER BY major DESC, student_id;
+
+SELECT *
+FROM student
+LIMIT 2;
+
+--Search operators: <, >, <=, >=, =, <> (!=), AND, OR
+
+SELECT *
+FROM student
+WHERE name IN ('Claire', 'Kate', 'Mike')
+ORDER BY name;
+
+DROP TABLE student;
