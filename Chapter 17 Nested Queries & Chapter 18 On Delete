@@ -1,0 +1,28 @@
+--Find names of all employees who have sold over 30,000 to a single client
+SELECT emp_id, first_name, last_name FROM employee
+WHERE emp_id IN (
+    SELECT emp_id FROM works_with
+    WHERE total_sales > 30000
+);
+
+--Find all clients who are handled by the branch
+--that Michael Scott manages
+--assume you know his emp_id=102
+SELECT * FROM client
+WHERE client.branch_id =(
+    SELECT branch.branch_id FROM branch
+    WHERE branch.mgr_id = 102
+    LIMIT 1
+);
+
+--ON DELETE SET NULL:
+--When something is deleted in one table (Table 1) 
+--that is related as a foreign key to another table (Table 2)
+--The foreign key in the Table 2 becomes NULL
+
+--ON DELETE CASCADE
+--When something is deleted in one table (Table 1) 
+--that is related as a primary key or foreign key to another table (Table 2)
+--The entire row with that key in Table 2 will be deleted
+
+
